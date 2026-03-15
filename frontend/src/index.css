@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ensure body can scroll for homepage */
+@layer base {
+  body {
+    overflow: auto !important;
+  }
+}

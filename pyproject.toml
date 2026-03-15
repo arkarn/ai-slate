@@ -1,0 +1,16 @@
+[project]
+name = "minimal-realtime-voice-chat"
+version = "0.1.0"
+description = "Minimal OpenAI Realtime API implementation with custom deployment"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "websockets",
+    "python-multipart",
+    "python-dotenv",
+    "google-genai"
+]
+
+# No build-system section needed for a simple script project

@@ -1,0 +1,293 @@
+/* Whiteboard Styles */
+.whiteboard-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 1rem);
+  overflow: hidden;
+  background: #fff;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.whiteboard-placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #6c757d;
+  background: #f8f9fa;
+}
+
+.whiteboard-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 20px;
+  background: #fff;
+  border-bottom: 1px solid #dee2e6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+}
+
+.tool-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tool-btn {
+  padding: 8px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  background: #fff;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.tool-btn:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+  transform: translateY(-1px);
+}
+
+.tool-btn.active {
+  background: #1976d2;
+  border-color: #1565c0;
+  color: #fff;
+}
+
+.tool-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.tool-btn:disabled:hover {
+  background: #fff;
+  border-color: #dee2e6;
+  transform: none;
+}
+
+.stroke-width-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #495057;
+  font-weight: 500;
+}
+
+.stroke-width-slider {
+  width: 100px;
+  height: 4px;
+  border-radius: 2px;
+  background: #dee2e6;
+  outline: none;
+  cursor: pointer;
+}
+
+.stroke-width-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1976d2;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stroke-width-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1976d2;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #ffebee;
+  border: 1px solid #ffcdd2;
+  border-radius: 20px;
+  color: #c62828;
+  font-size: 13px;
+  font-weight: 500;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.whiteboard-canvas-container {
+  flex: 1;
+  position: relative;
+  background: #ffffff;
+}
+
+/* Remove any CSS that might interfere with TLDraw's default UI */
+
+.whiteboard-canvas {
+  width: 100%;
+  cursor: crosshair;
+  touch-action: none;
+  display: block;
+}
+
+.whiteboard-canvas[data-tool="eraser"] {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect x="2" y="8" width="16" height="8" rx="2" fill="%23ff6b6b" stroke="%23333" stroke-width="1"/></svg>') 10 16, auto;
+}
+
+.canvas-status {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #6c757d;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.saving-indicator {
+  color: #28a745;
+  font-weight: 500;
+}
+
+/* Tool-specific cursors */
+.whiteboard-canvas[data-tool="pen"] {
+  cursor: crosshair;
+}
+
+.whiteboard-canvas[data-tool="eraser"] {
+  cursor: grab;
+}
+
+.whiteboard-canvas[data-tool="eraser"]:active {
+  cursor: grabbing;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .whiteboard-toolbar {
+    padding: 8px 15px;
+    gap: 15px;
+  }
+  
+  .tool-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  
+  .stroke-width-label {
+    font-size: 13px;
+  }
+  
+  .stroke-width-slider {
+    width: 80px;
+  }
+  
+  .recording-indicator {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  
+  .canvas-status {
+    bottom: 8px;
+    left: 8px;
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .whiteboard-toolbar {
+    flex-wrap: wrap;
+    padding: 8px 10px;
+    gap: 10px;
+  }
+  
+  .tool-group {
+    gap: 6px;
+  }
+  
+  .recording-indicator {
+    width: 100%;
+    justify-content: center;
+    order: -1;
+  }
+}
+
+/* Scrollbar styling for canvas container */
+.whiteboard-canvas-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.whiteboard-canvas-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.whiteboard-canvas-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.whiteboard-canvas-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* For Firefox scrollbar */
+.whiteboard-canvas-container {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
+}
+
+/* Extend Page Button */
+.extend-page-button {
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.extend-page-button:hover {
+  background: #1565c0;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.4);
+}
+
+.extend-page-button:active {
+  transform: translateX(-50%) translateY(0px);
+}

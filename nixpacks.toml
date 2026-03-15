@@ -1,0 +1,10 @@
+providers = ["python", "node"]
+
+[phases.install]
+cmds = ["python -m venv /opt/venv && . /opt/venv/bin/activate && pip install uv && uv sync --frozen", "cd frontend && npm install"]
+
+[phases.build]
+cmds = ["cd frontend && npm run build"]
+
+[start]
+cmd = "uv run python main.py"
